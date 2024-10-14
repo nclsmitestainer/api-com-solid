@@ -30,6 +30,10 @@ export class InMemoryCheckInsRepository implements CheckInsRepository {
     // no slice temos 2 argumentos: o primeiro seria a primeira parte, o numero de itens que queremos pegar, e o segundo argumento seria a segunda parte, o limite; no primeiro argumento pegamos o numero da pagina - 1 (pois o indice começa em 0), nosso requisito não funcional é de 20 itens por página, então fica assim: page 1 - 1 = 0, 0 * 20 = 0 (começamos a pegar desde o primeiro item), page 1 * 20 = 20, pegamos do item 0 até o item 20 do nosso array filtrado.
   }
 
+  async countByUserId(userId: string) {
+    return this.items.filter((item) => item.user_id === userId).length
+  }
+
   async create(data: Prisma.CheckInUncheckedCreateInput) {
     const checkIn = {
       id: randomUUID(),
