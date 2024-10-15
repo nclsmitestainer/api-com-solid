@@ -1,7 +1,7 @@
 import { expect, describe, it, beforeEach, afterEach, vi } from 'vitest'
 import { InMemoryCheckInsRepository } from '@/repositories/in-memory/in-memory-check-ins-repository'
 import { CheckInUseCase } from './check-in'
-import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gym-respository'
+import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gyms-respository'
 import { Decimal } from '@prisma/client/runtime/library'
 import { MaxDistanceError } from './errors/max-distance-error'
 import { MaxNumbersOfCheckInsError } from './errors/max-numbers-of-check-ins-error'
