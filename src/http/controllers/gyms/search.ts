@@ -17,7 +17,7 @@ export async function search(req: FastifyRequest, rep: FastifyReply) {
     page,
   })
 
-  return rep.status(201).send({
+  return rep.status(200).send({
     gyms,
   })
 }
