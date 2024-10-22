@@ -21,7 +21,9 @@ export async function authenticate(req: FastifyRequest, rep: FastifyReply) {
 
     // O sistema de refresh token funciona da seguinte forma, esse token abaixo tem a vida util de apenas 10m, como foi definido no app.ts, mas o refreshToken tem vida util de 7d, no entanto o token que o frontend tem acesso e usa é o de 10m. Quando ele expirar e o usuário tentar fazer uma requisição nova, o back-end irá verificar se ele possui um refreshToken e a partir do refresh ele irá criar um novo token acessível. Dessa forma, o usuário terá acesso por tempo ilimitado a plataforma, contanto que não fique off por 7d.
     const token = await rep.jwtSign(
-      {},
+      {
+        role: user.role,
+      },
       {
         sign: {
           sub: user.id,
@@ -30,7 +32,9 @@ export async function authenticate(req: FastifyRequest, rep: FastifyReply) {
     )
 
     const refreshToken = await rep.jwtSign(
-      {},
+      {
+        role: user.role,
+      },
       {
         sign: {
           sub: user.id,
